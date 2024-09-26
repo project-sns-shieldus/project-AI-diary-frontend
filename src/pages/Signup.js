@@ -1,5 +1,6 @@
 import React from 'react';
 import './Signup.css';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 
 function Signup() {
   return (
@@ -21,8 +22,11 @@ function Signup() {
         <button type="submit" className="signup-button">회원가입</button>
       </form>
       <div className="login-prompt">
-        이미 계정이 있으신가요? <a href="/login" className="tologin-link">로그인</a>
+        이미 계정이 있으신가요? 
+        <Link to="/login" className="tologin-link">로그인</Link>
+        {/* <a href="/login" className="tologin-link">로그인</a> */}
       </div>
+
     </div>
   );
 }
