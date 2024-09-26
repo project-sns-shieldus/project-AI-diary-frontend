@@ -1,6 +1,6 @@
 import React from 'react';
 import './Login.css';
-
+import { Link } from 'react-router-dom'; // Import Link for navigation
 function Login() {
   return (
     <div className="login-container">
@@ -14,8 +14,7 @@ function Login() {
         </div>
         <button type="submit" className="login-button">로그인</button>
       </form>
-
-      <div className="signup">회원가입</div>
+      <Link to="/signup" className="signup">회원가입</Link> 
       <div className="정보찾기">
         <div className="아이디찾기링크">
           <div className="findid">아이디 찾기</div>
