@@ -33,12 +33,14 @@ function Login() {
       if (response.status === 200) {
         console.log('로그인 성공:', response);
 
-        // 서버로부터 받은 토큰과 이메일을 로컬 스토리지에 저장
-        localStorage.setItem('accessToken', response.data.token);
-        localStorage.setItem('email',response.data.email);
+        // 응답 데이터에서 필요한 정보 추출
+        const accessToken = response.data.body.accessToken;
+        const email = loginData.email; // 요청 시 사용한 이메일을 사용
 
-        // UserProvider에 사용자 상태 설정
-        //setCurrentUser({ email: email });
+        // 추출된 토큰과 이메일 저장
+        localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem('email', email);
+    
 
         // 로그인 성공 시, 채팅 페이지로 이동
         alert('로그인 성공!');
