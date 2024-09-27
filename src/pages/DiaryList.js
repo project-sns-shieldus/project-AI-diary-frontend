@@ -9,34 +9,41 @@ const DiaryList = () => {
 
   useEffect(() => {
     const fetchDiaryEntries = async () => {
+      const email = localStorage.getItem('email');
+  
+      if (!email) {
+        console.error("No email found in localStorage");
+        return;
+      }
+  
       try {
-        const response = await axios.get(`http://localhost:8080/api/diary/get/byEmail/${localStorage.getItem('email')}`, {
+        const response = await axios.get(`http://localhost:8080/api/diary/get/byEmail/${email}`, {
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')}`, // JWT 토큰 인증
+            'Authorization': `${localStorage.getItem('accessToken')}`,
           },
         });
-
-        // 서버에서 반환된 필드와 프론트엔드의 필드 매칭
+  
+        // 서버에서 반환된 데이터를 처리
         const transformedData = response.data.map(entry => ({
           diaryId: entry.diaryId,
           userid: entry.userid,
           diaryDate: entry.diaryDate,
           title: entry.title,
           weather: entry.weather,
-          content: entry.notes, // notes -> content로 변환
+          content: entry.notes,
           createdAt: entry.createdAt,
           updatedDateAt: entry.updatedDateAt,
         }));
-
-        setDiaryEntries(transformedData); // 변환된 데이터를 상태에 저장
+  
+        setDiaryEntries(transformedData);
       } catch (error) {
         console.error('Error fetching diary entries:', error);
       }
     };
-
+  
     fetchDiaryEntries();
-  }, []); // 컴포넌트가 마운트될 때 한 번 실행
+  }, []);   // 컴포넌트가 마운트될 때 한 번 실행
 
   // "일기 쓰기" 버튼을 누르면 CreateDiary로 이동
   const writeDiary = () => {
