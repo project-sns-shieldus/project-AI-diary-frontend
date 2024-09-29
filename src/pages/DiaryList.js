@@ -1,19 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './DiaryList.css';
-import cardImage1 from '../images/카드2.png';
-import cardImage2 from '../images/카드3.png';
-import cardImage3 from '../images/카드4.png';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-function DiaryList() {
-  // 백엔드에서 데이터 가져와서 유저의 일기목록을 꽂아주기!
-  const diaryEntries = [
-    { id: 1, title: 'Fall, and Coffee', date: '2024-09-01', image: cardImage1 },
-    { id: 2, title: 'Sunday Memories', date: '2024-09-10', image: cardImage2 },
-    { id: 3, title: 'Jeju Sea', date: '2024-09-15', image: cardImage3 },
-  ];
-
+const DiaryList = () => {
+  const [diaryEntries, setDiaryEntries] = useState([]); // 일기 목록 상태
   const navigate = useNavigate(); // useNavigate 훅 호출
+
+  useEffect(() => {
+    const fetchDiaryEntries = async () => {
+      const email = localStorage.getItem('email');
+  
+      if (!email) {
+        console.error("No email found in localStorage");
+        return;
+      }
+  
+      try {
+        const response = await axios.get(`http://localhost:8080/api/diary/get/byEmail/${email}`, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `${localStorage.getItem('accessToken')}`,
+          },
+        });
+  
+        // 서버에서 반환된 데이터를 처리
+        const transformedData = response.data.map(entry => ({
+          diaryId: entry.diaryId,
+          userid: entry.userid,
+          diaryDate: entry.diaryDate,
+          title: entry.title,
+          weather: entry.weather,
+          content: entry.notes,
+          createdAt: entry.createdAt,
+          updatedDateAt: entry.updatedDateAt,
+        }));
+  
+        setDiaryEntries(transformedData);
+      } catch (error) {
+        console.error('Error fetching diary entries:', error);
+      }
+    };
+  
+    fetchDiaryEntries();
+  }, []);   // 컴포넌트가 마운트될 때 한 번 실행
 
   // "일기 쓰기" 버튼을 누르면 CreateDiary로 이동
   const writeDiary = () => {
@@ -28,13 +58,14 @@ function DiaryList() {
       <button className="write-diary-button" onClick={writeDiary}>일기 쓰기</button>
 
       <div className="diary-cards">
-        {/* 유저가 생성한 일기 개수만큼 카드 레이아웃 반복하는 함수 */}
+        {/* 유저가 생성한 일기 개수만큼 카드 레이아웃 반복 */}
         {diaryEntries.map((entry) => (
-          <div key={entry.id} className="diary-card">
+          <div key={entry.diaryId} className="diary-card">
             <img src={entry.image} alt="Diary Preview" className="diary-card-image" />
             <div className="diary-card-info">
               <h2 className="diary-card-title">{entry.title}</h2>
-              <p className="diary-card-date">{entry.date}</p>
+              <p className="diary-card-date">{entry.diaryDate}</p>
+              <p className="diary-card-content">{entry.content}</p> {/* content 필드를 사용 */}
             </div>
           </div>
         ))}
