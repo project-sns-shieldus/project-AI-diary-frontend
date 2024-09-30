@@ -4,10 +4,12 @@ import './Signup.css';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Signup() {
-  // 이메일과 비밀번호 상태를 정의
+  // 이메일, 비밀번호, 닉네임 상태 정의
   const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+
   const navigate = useNavigate(); // 네비게이션 훅
 
   // 회원가입 버튼 클릭 시 실행되는 함수
@@ -20,14 +22,16 @@ function Signup() {
       return;
     }
 
+    // 회원가입 데이터 구성
     const registerData = {
       email,
+      username,  // 닉네임 추가
       password
     };
 
     try {
       // 회원가입 API 호출
-      const response = await axios.post('http://localhost:8080/api/v1/register', registerData,{
+      const response = await axios.post('http://localhost:8080/api/v1/register', registerData, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -57,6 +61,16 @@ function Signup() {
           />
         </div>
         <div className="input-container">
+          {/* 닉네임 입력 필드 */}
+          <input 
+            type="text" 
+            className="input-field" 
+            placeholder="닉네임을 입력하세요" 
+            value={username}
+            onChange={(e) => setUsername(e.target.value)} 
+          />
+        </div>
+        <div className="input-container">
           {/* 비밀번호 입력 필드 */}
           <input 
             type="password" 
@@ -83,7 +97,6 @@ function Signup() {
       <div className="login-prompt">
         이미 계정이 있으신가요? 
         <Link to="/login" className="tologin-link">로그인</Link>
-        {/* <a href="/login" className="tologin-link">로그인</a> */}
       </div>
 
     </div>
