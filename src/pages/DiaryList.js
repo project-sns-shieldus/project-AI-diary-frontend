@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './DiaryList.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // useNavigate 훅 임포트
 import axios from 'axios';
 
 const DiaryList = () => {
@@ -43,11 +43,16 @@ const DiaryList = () => {
     };
   
     fetchDiaryEntries();
-  }, []);   // 컴포넌트가 마운트될 때 한 번 실행
+  }, []); // 컴포넌트가 마운트될 때 한 번 실행
 
   // "일기 쓰기" 버튼을 누르면 CreateDiary로 이동
   const writeDiary = () => {
-    navigate('/creatediary'); 
+    navigate('/creatediary');
+  };
+
+  // 일기 카드를 클릭했을 때 DiaryDetail 페이지로 이동
+  const handleCardClick = (diaryId) => {
+    navigate(`/diary/${diaryId}`); // DiaryDetail 페이지로 이동하며 diaryId를 전달
   };
 
   return (
@@ -60,7 +65,12 @@ const DiaryList = () => {
       <div className="diary-cards">
         {/* 유저가 생성한 일기 개수만큼 카드 레이아웃 반복 */}
         {diaryEntries.map((entry) => (
-          <div key={entry.diaryId} className="diary-card">
+          <div
+            key={entry.diaryId}
+            className="diary-card"
+            onClick={() => handleCardClick(entry.diaryId)} // 카드 클릭 시 상세 페이지로 이동
+            style={{ cursor: 'pointer' }} // 마우스 포인터를 손 모양으로 변경
+          >
             <img src={entry.image} alt="Diary Preview" className="diary-card-image" />
             <div className="diary-card-info">
               <h2 className="diary-card-title">{entry.title}</h2>

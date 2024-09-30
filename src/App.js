@@ -20,6 +20,9 @@ function App() {
         <Route path="/creatediary" element={<CreateDiary />} />
         <Route path="/diarydetail" element={<DiaryDetail />} />
         <Route path="/diarylist" element={<DiaryList />} />
+        <Route path="/diarydetail/:id" element={<DiaryDetail />} /> {/* 일기 ID를 파라미터로 받는 라우트 */}
+        <Route path="/diary/:id" element={<DiaryDetail />} />
+
       </Routes>
     </Router>
 
