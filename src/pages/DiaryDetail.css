@@ -1,0 +1,151 @@
+.diary-content2 {
+  position: absolute;
+  width: 1929px;
+  height: 1011px;
+  left: -9px;
+  top: 87px;
+  background: url(/src/images/상세.png); /* 배경 이미지 */
+}
+.diary-content {
+  position: absolute;
+  width: 1929px;
+  height: 1011px;
+  left: -9px;
+  top: 87px;
+  background: url(/src/images/스케치북3.png); /* 배경 이미지 */
+}
+
+.diary-title2 {
+  position: absolute;
+  width: 1252.5px;
+  height: 60px; 
+  left: 970.5px;
+  top: 130px;
+  padding: 20px;
+  font-family: 'Cafe24 Dongdong';
+  font-size: 74px;
+  line-height: 75px;
+  color: #000000;
+  background: transparent;
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.diary-meta2 {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 800px; /* 총 너비를 설정 */
+  left: 990.5px;
+  top: 260px;
+}
+
+.diary-date,
+.diary-weather {
+  width: 380px;
+  height: 60px;
+  font-family: 'Cafe24 Dongdong';
+  font-size: 48px;
+  line-height: 50px;
+  color: #000000;
+  background: transparent;
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+}
+.diary-weather-container{
+  position: absolute;
+  left: 500px;
+  width: 600px;
+  display: flex;
+  align-items: center;
+  font-family: 'Cafe24 Dongdong';
+}
+
+.weather-label {
+  font-family: 'Cafe24 Dongdong';
+  font-size: 48px;
+  margin-right: 10px;
+  color: #000000;
+}
+.diary-detailtext {
+  position: absolute;
+  width: 732.5px;
+  height: 440px;
+  left: 969px;
+  top: 320px;
+  padding: 20px;
+  font-family: 'Cafe24 Dongdong';
+  font-size: 60px;
+  line-height: 75px;
+  color: #000000;
+  background: transparent;
+  border: none;
+  resize: none;
+  outline: none;
+  text-transform: uppercase;
+}
+
+
+
+
+
+
+
+/*  */
+.imagebox {
+  position: absolute;
+  width: 744px;
+  height: 700px;
+  left: 190px;
+  top: 188px;
+  background-size: cover; /* Ensures the image covers the entire box */
+  background-position: center; /* Centers the image */
+}
+
+
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  left: 1226px;
+  top: 916.5px;
+  width: 532px;
+}
+
+.modify-button {
+  width: 247.5px;
+  height: 91.5px;
+  background: #181830;
+  border-radius: 30px;
+  font-family: 'Cafe24 Dongdong';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 33.75px;
+  line-height: 34px;
+  color: #FFFFFF;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.delete-button {
+  width: 247.5px;
+  height: 91.5px;
+  background: #FF5724;
+  border-radius: 30px;
+  font-family: 'Cafe24 Dongdong';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 33.75px;
+  line-height: 34px;
+  color: #FFFFFF;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+}

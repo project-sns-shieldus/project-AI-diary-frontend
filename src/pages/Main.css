@@ -1,0 +1,120 @@
+
+
+.heading {
+  position: absolute;
+  width: 816px;
+  height: 75px;
+  left: calc(50% - 816px/2);
+  top: 253.5px;
+  font-family: 'Cafe24 Dongdong';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 67.5px;
+  line-height: 75px;
+  align-items: center;
+  text-align: center;
+  color: #181830;
+}
+
+.create-diary-button {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding: 42.75px 46.5px 43.5px;
+  row-gap: 0px;
+  position: absolute;
+  width: 346px;
+  height: 120.25px;
+  min-height: 120px;
+  left: calc(50% - 346px/2 + 4.16px);
+  top: 430.5px;
+  background: #F9D72F;
+  border: 1.5px solid #F9D72F;
+  border-radius: 15px;
+  font-family: 'Cafe24 Dongdong';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 33.75px;
+  line-height: 34px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  color: #181830;
+}
+
+.first-time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  position: absolute;
+  width: 144px;
+  height: 38px;
+  left: calc(50% - 144px/2);
+  top: 597px;
+  font-family: 'Cafe24 Dongdong';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 26.25px;
+  line-height: 38px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #009485;
+}
+
+.use-one-drawing {
+  position: absolute;
+  width: 478.17px;
+  height: 60px;
+  left: calc(50% - 478.17px/2 - 2.42px);
+  top: 768px;
+  font-family: 'Cafe24 Dongdong';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 45px;
+  line-height: 60px;
+  align-items: center;
+  text-align: center;
+  color: #FF9900;
+}
+
+
+.findid{
+  width: 103px;
+height: 38px;
+
+font-family: 'Cafe24 Dongdong';
+font-style: normal;
+font-weight: 400;
+font-size: 21.7383px;
+line-height: 38px;
+/* identical to box height, or 173% */
+display: flex;
+align-items: center;
+text-decoration-line: underline;
+
+color: #6B7280;
+}
+
+.findpw{
+  width: 114px;
+height: 38px;
+
+font-family: 'Cafe24 Dongdong';
+font-style: normal;
+font-weight: 400;
+font-size: 20.7129px;
+line-height: 38px;
+/* identical to box height, or 181% */
+display: flex;
+align-items: center;
+text-decoration-line: underline;
+
+color: #6B7280;
+}
