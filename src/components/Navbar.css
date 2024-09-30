@@ -12,6 +12,8 @@
   padding: 0 20px; /* 패딩 추가 */
 }
 
+.profile-link,
+.logout-link,
 .main-link,
 .diary-link,
 .login-link {
@@ -20,6 +22,8 @@
   transition: color 0.3s; /* 부드러운 전환 효과 추가 */
 }
 
+.profile-link:hover,
+.logout-link:hover,
 .main-link:hover,
 .diary-link:hover,
 .login-link:hover {
@@ -48,6 +52,45 @@ text-align: center;
 color: #FFFFFF;
 }
 
+.profile-link{
+  position: absolute;
+  width: 192px;
+  height: 109.5px;
+  right: 320.5px;
+  bottom: -9px;
+
+  font-family: 'Cafe24 Dongdong';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 45px;
+  line-height: 60px;
+  /* or 133% */
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #FFFFFF;
+}
+
+.logout-link{
+  position: absolute;
+  width: 192px;
+  height: 109.5px;
+  right: 73.5px;
+  bottom: -9px;
+
+  font-family: 'Cafe24 Dongdong';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 45px;
+  line-height: 60px;
+  /* or 133% */
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #FFFFFF;
+}
 .main-link{
   position: absolute;
 width: 276px;
