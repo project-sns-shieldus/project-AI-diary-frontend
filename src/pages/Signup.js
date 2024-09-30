@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Signup.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Signup() {
   // 이메일과 비밀번호 상태를 정의
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const navigate = useNavigate(); // 네비게이션 훅
 
   // 회원가입 버튼 클릭 시 실행되는 함수
   const handleSignup = async (e) => {
@@ -34,6 +35,7 @@ function Signup() {
 
       console.log('회원가입 성공:', response.data);
       alert('회원가입이 성공적으로 완료되었습니다!');
+      navigate('/login');
     } catch (error) {
       console.error('회원가입 실패:', error);
       alert('회원가입에 실패했습니다.');
