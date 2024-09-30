@@ -4,7 +4,7 @@ import axios from 'axios';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(undefined);  // 초기값을 undefined로 설정
   const [email, setEmail] = useState('');
   const [accessToken, setAccessToken] = useState('');
 
@@ -36,6 +36,10 @@ export const AuthProvider = ({ children }) => {
     setEmail('');
     setIsLoggedIn(false);
   };
+
+  if (isLoggedIn === undefined) {
+    return <div>Loading...</div>;  // 초기 로딩 상태 추가
+  }
 
   return (
     <AuthContext.Provider value={{ isLoggedIn, login, logout, email, accessToken }}>

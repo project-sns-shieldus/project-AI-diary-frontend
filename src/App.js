@@ -8,6 +8,7 @@ import Profile from './pages/Profile';
 import CreateDiary from './pages/CreateDiary';
 import DiaryDetail from './pages/DiaryDetail';
 import DiaryList from './pages/DiaryList';
+import PasswordChange from './pages/PasswordChange';
 import { AuthProvider } from './contexts/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 
@@ -30,6 +31,15 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/passwordchange"
+            element={
+              <ProtectedRoute>
+                <PasswordChange/>
+              </ProtectedRoute>
+            }
+          />
+          
           <Route
             path="/creatediary"
             element={
