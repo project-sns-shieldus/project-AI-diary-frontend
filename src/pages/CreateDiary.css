@@ -49,6 +49,7 @@
   outline: none;
   text-transform: uppercase;
 }
+
 .diary-weather-container{
   position: absolute;
   left: 500px;
@@ -64,6 +65,7 @@
   margin-right: 10px;
   color: #000000;
 }
+
 .diary-textarea {
   position: absolute;
   width: 1252.5px;
@@ -84,10 +86,11 @@
 
 .save-button-container {
   position: absolute;
-  width: 247.5px;
-  height: 91.5px;
-  left: 1654.5px;
-  top: 949.5px;
+  width: 200px; /* 버튼 크기 축소 */
+  height: 70px; /* 버튼 높이 축소 */
+  left: 80%; /* 위치를 퍼센트로 변경하여 반응형으로 설정 */
+  top: 95%; /* 상단으로 위치 조정 */
+  transform: translate(-50%, -50%); /* 부모 요소 기준으로 중앙 정렬 */
 }
 
 .save-button {
@@ -96,7 +99,7 @@
   background: #F9D72F;
   border-radius: 30px;
   font-family: 'Cafe24 Dongdong';
-  font-size: 33.75px;
+  font-size: 28px; /* 폰트 크기 축소 */
   color: #000000;
   display: flex;
   align-items: center;

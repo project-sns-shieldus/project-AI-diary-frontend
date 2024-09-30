@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import './CreateDiary.css';
+import axios from 'axios';  
+import { useNavigate } from 'react-router-dom';
+
 
 function CreateDiary() {
   const [content, setContent] = useState('');
   const [title, setTitle] = useState('');
   const [diaryDate, setDiaryDate] = useState('');
   const [weather, setWeather] = useState('');
+  const navigate = useNavigate();  // useNavigate 훅 사용
+  
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // 서버로 데이터 전송 로직 추가
     const diaryData = {
@@ -15,9 +20,21 @@ function CreateDiary() {
       diaryDate,
       weather,
       notes: content,
-      createdAt: new Date().toISOString(),
+      //createdAt: new Date().toISOString(),
     };
     console.log('저장된 데이터:', diaryData);
+
+    const response = await axios.post('http://localhost:8080/api/diary/add',diaryData,{
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `${localStorage.getItem('accessToken')}`,
+      },
+    });
+
+    if(response.status === 200) {
+      alert('일기 저장 성공!');
+      navigate('/diarylist');
+    }
   };
 
   return (
