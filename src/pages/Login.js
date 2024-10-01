@@ -26,7 +26,7 @@ function Login() {
       if (response.status === 200) {
         const accessToken = response.data.body.accessToken;
         login(accessToken, email);  // 로그인 상태 업데이트
-        navigate('/diarylist');
+        navigate('/diarycalendar');
       }
     } catch (error) {
       console.error('로그인 실패:', error);
