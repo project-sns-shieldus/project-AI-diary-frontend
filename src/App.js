@@ -11,16 +11,18 @@ import DiaryList from './pages/DiaryList';
 import PasswordChange from './pages/PasswordChange';
 import { AuthProvider } from './contexts/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
+import Test from './pages/test';
+import Trans from './pages/trans';
 
 function App() {
   return (
     <AuthProvider>
       <Router>
-        <Navbar />
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/test" element={<Test />} />
 
           {/* 로그인한 사용자만 접근 가능한 경로 */}
           <Route
