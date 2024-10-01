@@ -1,0 +1,40 @@
+.size {
+    width: var(--width, 14px);
+    height: var(--height, 14px);
+}
+
+.shape {
+    background: var(--background, transparent);
+    border: var(--border, transparent);
+    border-radius: var(--border-radius, 0);
+}
+
+.shadow {
+    box-shadow: var(--size, 3px) var(--size, 3px) 0px 0px rgba(var(--color, black), var(--amount, 0.5));
+}
+
+.font {
+    color: var(--color, black);
+    font-family: var(--font-family, 'Arial', sans-serif); /* default font */
+    font-size: var(--font-size, 1em);
+    font-weight: var(--font-weight, 500);
+}
+
+.hover-event {
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: var(--justify-content, center);
+    align-items: var(--align-items, center);
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: var(--justify-content, center);
+    align-items: var(--align-items, center);
+}

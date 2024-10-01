@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import './CreateDiary.css';
 import axios from 'axios';  
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import AiLoadingModal from '../components/AiLoadingModal'; 
 import DiaryPreview from '../components/DiaryPreview'; 
 
 function CreateDiary() {
+  const location = useLocation();
   const [content, setContent] = useState('');
   const [title, setTitle] = useState('');
-  const [diaryDate, setDiaryDate] = useState('');
+  const [diaryDate, setDiaryDate] = useState(location.state?.selectedDate || ''); // 전달된 날짜로 초기화
   const [weather, setWeather] = useState('');
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState(null);
@@ -18,7 +19,6 @@ function CreateDiary() {
   const handleGenerateImage = async () => {
     setLoading(true);
     try {
-      // Flask 서버로 일기 내용을 보내 이미지 생성 요청
       const flaskResponse = await axios.post('http://localhost:5000/translation', {
         text: content,
         source: 'ko',
@@ -31,8 +31,8 @@ function CreateDiary() {
 
       if (flaskResponse.status === 200) {
         const { image_url } = flaskResponse.data;
-        setImageUrl(image_url);        // 이미지 URL 저장
-        setShowPreview(true);          // 미리보기 표시
+        setImageUrl(image_url);
+        setShowPreview(true);
       } else {
         alert('이미지 생성 중 오류가 발생했습니다.');
       }
@@ -45,17 +45,14 @@ function CreateDiary() {
   };
 
   const handleSaveDiary = async () => {
-    // 서버로 데이터 전송 로직
     const diaryData = {
       title: title,
       diaryDate,
       weather,
       notes: content,
     };
-    console.log('저장된 데이터:', diaryData);
 
     try {
-      // 1. 일기 저장
       const response = await axios.post('http://localhost:8080/api/diary/add', diaryData, {
         headers: {
           'Content-Type': 'application/json',
@@ -64,22 +61,19 @@ function CreateDiary() {
       });
 
       if (response.status === 200) {
-        const diaryId = response.data;  // 서버에서 반환한 diaryId를 받음
+        const diaryId = response.data;
         alert('일기 저장 성공!');
 
-        // 2. 이미지 저장
         const imageData = {
-          imageUrls: [imageUrl],  // Flask 서버로부터 받은 이미지 URL을 배열로 감싸서 전송
+          imageUrls: [imageUrl],
         };
 
-        // 이미지 저장 요청 보내기
         const imageResponse = await axios.post(`http://localhost:8080/api/images/${diaryId}`, imageData, {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `${localStorage.getItem('accessToken')}`,
           },
         });
-
 
         if (imageResponse.status === 200) {
           alert('이미지 저장 성공!');

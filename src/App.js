@@ -13,11 +13,13 @@ import { AuthProvider } from './contexts/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Test from './pages/test';
 import Trans from './pages/trans';
+import DiaryCalendar from './pages/DiaryCalendar'
 
 function App() {
   return (
     <AuthProvider>
       <Router>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/login" element={<Login />} />
@@ -50,6 +52,16 @@ function App() {
               </ProtectedRoute>
             }
           />
+
+          <Route
+            path="/diarycalendar"
+            element={
+              <ProtectedRoute>
+                <DiaryCalendar />
+              </ProtectedRoute>
+            }
+          />
+
           <Route
             path="/diarylist"
             element={
