@@ -4,7 +4,7 @@
   height: 1011px;
   left: -9px;
   top: 87px;
-  background: url(/src/images/스케치북3.png); /* 배경 이미지 */
+  background: url(/src/images/스케치북3.png); 
 }
 
 .diary-title {
@@ -31,7 +31,7 @@
   position: absolute;
   display: flex;
   justify-content: space-between;
-  width: 800px; /* 총 너비를 설정 */
+  width: 800px; 
   left: 390.5px;
   top: 260px;
 }
@@ -86,11 +86,11 @@
 
 .save-button-container {
   position: absolute;
-  width: 200px; /* 버튼 크기 축소 */
-  height: 70px; /* 버튼 높이 축소 */
-  left: 80%; /* 위치를 퍼센트로 변경하여 반응형으로 설정 */
-  top: 95%; /* 상단으로 위치 조정 */
-  transform: translate(-50%, -50%); /* 부모 요소 기준으로 중앙 정렬 */
+  width: 200px; 
+  height: 70px; 
+  left: 80%; 
+  top: 95%; 
+  transform: translate(-50%, -50%); 
 }
 
 .save-button {
@@ -107,4 +107,16 @@
   text-transform: uppercase;
   cursor: pointer;
   border: none;
+}
+
+.image-preview {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.image-preview img {
+  max-width: 90%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }

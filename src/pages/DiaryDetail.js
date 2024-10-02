@@ -7,7 +7,7 @@ function DiaryDetail() {
   const { id } = useParams(); // URL에서 일기 ID를 가져옴
   const navigate = useNavigate();
   const [content, setContent] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
+  const [imageUrl, setImageUrl] = useState(''); // 이미지 URL 상태
   const [title, setTitle] = useState('');
   const [diaryDate, setDiaryDate] = useState('');
   const [weather, setWeather] = useState('');
@@ -27,9 +27,24 @@ function DiaryDetail() {
         setDiaryDate(data.diaryDate);
         setWeather(data.weather);
         setContent(data.notes);
-        setImageUrl(data.imageUrl); // 이미지 URL이 데이터에 포함되어 있는 경우
+
+        // 이미지 파일명을 가져와 이미지 URL을 생성하고 컨테이너에 출력하기~
+        const imageResponse = await axios.get(`http://localhost:8080/api/images/diary/${id}`, {
+          headers: {
+            'Authorization': `${localStorage.getItem('accessToken')}`,
+          }
+        });
+
+        if (imageResponse.data.length > 0) {
+          const fileName = imageResponse.data[0].fileName;
+          const imageUrl = `http://localhost:8080/api/images/${fileName}`; // 파일 URL 생성
+          setImageUrl(imageUrl);
+        } else {
+          setImageUrl(''); // 이미지가 없을 경우 빈 값
+        }
+
       } catch (error) {
-        console.error('Failed to fetch diary detail:', error);
+        console.error('Failed to fetch diary detail or images:', error);
       }
     };
 

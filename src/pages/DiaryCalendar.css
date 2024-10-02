@@ -1,0 +1,132 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #F9F9F9; 
+}
+
+.calendar-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.calendar {
+  max-width: 1350px; 
+  width: 100%;
+  padding: 30px; 
+  background: #fff;
+  border-radius: 15px; 
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
+  border: 2px solid #ffe66a65; 
+}
+
+.row {
+  display: flex;
+}
+
+.header {
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.text {
+  font-size: 2em;
+  font-weight: bold;
+  color: #181830;
+}
+
+.nav-icon {
+  font-size: 2.2em; 
+  cursor: pointer;
+  color: #666;
+  margin: 0 15px;
+  transition: color 0.3s;
+}
+
+.nav-icon:hover {
+  color: #000;
+}
+
+.days {
+  background-color: #f9f9f9;
+  padding: 15px 0;
+  font-size: 1.2em; 
+  font-weight: bold;
+}
+
+.col {
+  flex: 1;
+  text-align: center;
+}
+
+.col-center {
+  font-weight: bold;
+  color: #666;
+}
+
+.body {
+  min-height: 600px;
+}
+
+.cell {
+  height: 120px;
+  border: 1px solid #eee;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 10px;
+}
+
+.cell:hover {
+  background-color: #f1f1f1;
+}
+
+.disabled {
+  background-color: #fafafa;
+  color: #ccc;
+  cursor: default;
+}
+
+.today {
+  border: 2px solid #F9D72F;
+}
+
+.number {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1.2em;
+}
+
+.diary-dot {
+  width: 12px;
+  height: 12px;
+  background-color: #F9D72F;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .calendar {
+    width: 100%;
+    margin: 50px 0;
+    padding: 15px;
+  }
+
+  .cell {
+    height: 90px; /* 모바일에서도 크기를 1.5배로 유지 */
+  }
+
+  .text {
+    font-size: 1.5em;
+  }
+
+  .nav-icon {
+    font-size: 1.5em;
+  }
+}
